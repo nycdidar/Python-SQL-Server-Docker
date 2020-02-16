@@ -1,6 +1,13 @@
 # Python-SQL-Server-Docker
 Python SQL Server Docker
 
+
+SQLPad - SQL Server Admin Client
+![VSCode with NodeJS](sqlpad-demo.jpg)
+
+VSCode - Online IDE
+![VSCode with NodeJS](vs-code-demo.jpg)
+
 #### Install
 `docker-compose up -d`
 

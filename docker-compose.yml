@@ -5,6 +5,7 @@
 ## DB ADMIN: 4170
 ## PYTHON PORT: 6650
 ## SQL SERVER PORT: 1433
+## VSCODE: 8080
 ## -------------------------------------------------------------------------
 
 version: '3.4'
@@ -70,6 +71,21 @@ services:
       vscode:
         aliases:
             - vscode
+
+# -- VSCODE IDE---
+  vscode:
+    container_name: vscode
+    image: didar911/vscode
+    networks:
+      vscode:
+          aliases:
+              - vscode
+    ports:
+      - '8080:8080/tcp'
+    environment:
+      - PASSWORD=skybird
+    volumes:
+      - ./src/:/home/coder/project
 
 networks:
   vscode:
