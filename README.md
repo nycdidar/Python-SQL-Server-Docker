@@ -1,5 +1,5 @@
-# Python-SQL-Server-Docker
-Python SQL Server Docker
+# Python SQL Server Docker with VSCode
+Python SQL Server Docker with Vscode
 
 
 SQLPad - SQL Server Admin Client
