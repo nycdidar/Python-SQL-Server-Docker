@@ -13,6 +13,10 @@ VSCode - Online IDE
 
 Python Endpoint: `http://localhost:6650/`
 
+VSCode: `http://localhost:8080/`
+
+Password: `skybird`
+
 SQL Server Admin: `http://localhost:4170`
 
 Email: `admin@admin.com`
