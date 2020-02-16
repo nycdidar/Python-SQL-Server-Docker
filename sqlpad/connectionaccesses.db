@@ -1,0 +1,3 @@
+{"connectionId":"__EVERY_CONNECTION__","connectionName":"Every Connection","userId":"__EVERYONE__","userEmail":"Everyone","duration":0,"expiryDate":{"$$date":4074946793949},"_id":"n2gIN125q2VCYuKw"}
+{"$$indexCreated":{"fieldName":"connectionId","unique":false,"sparse":false}}
+{"$$indexCreated":{"fieldName":"userId","unique":false,"sparse":false}}

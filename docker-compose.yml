@@ -1,0 +1,76 @@
+# docker-compose.yml
+
+## Author: Didarul Amin
+## -------------------------------------------------------------------------
+## DB ADMIN: 4170
+## PYTHON PORT: 6650
+## SQL SERVER PORT: 1433
+## -------------------------------------------------------------------------
+
+version: '3.4'
+services:
+
+# -- SQL SERVER --- 
+  mssql:
+    image: microsoft/mssql-server-linux:latest
+    container_name: mssql
+    ports:
+      - 1433:1433
+    volumes:
+      - /var/opt/mssql
+      # we copy our scripts onto the container
+      - ./sql:/usr/src/app
+    # bash will be executed from that path, our scripts folder
+    working_dir: /usr/src/app
+    # run the entrypoint.sh that will import the data AND sqlserver
+    command: sh -c ' chmod +x ./start.sh; ./start.sh & /opt/mssql/bin/sqlservr;'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: SuperP4ssw0rd!
+    networks:
+      vscode:
+        aliases:
+            - vscode
+  
+# -- SQL SERVER CLIENT--- 
+  sqlpad:
+    image: 'sqlpad/sqlpad:latest'
+    hostname: 'sqlpad'
+    container_name: sqlpad
+    ports:
+      - '4170:3000'
+    environment:
+      - SQLPAD_DEBUG=true
+      - SQLPAD_ADMIN=admin@admin.com
+      - SQLPAD_ADMIN_PASSWORD=12345
+      #- DISABLE_USERPASS_AUTH=true
+      #- SQLPAD_QUERY_RESULT_MAX_ROWS=50000
+      #- SQLPAD_ALLOW_CONNECTION_ACCESS_TO_EVERYONE=true
+    volumes:
+      - ./sqlpad:/var/lib/sqlpad
+    networks:
+      vscode:
+        aliases:
+            - vscode
+            
+  python_app:
+    container_name: python_app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    links:
+      #- redis_cache
+      - mssql
+    ports:
+      - '6650:6650/tcp'
+    networks:
+      vscode:
+        aliases:
+            - vscode
+
+networks:
+  vscode:
+    driver: bridge
