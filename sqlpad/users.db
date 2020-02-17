@@ -1,3 +1,2 @@
-{"email":"admin@admin.com","role":"admin","passhash":"$2a$10$U5Ehdi/6BZOyx5LSChZryewQGAro.IG/b/KUyBOTw0OV8BIReoOIS","_id":"u5lvkzWt9RyNEpwu"}
-{"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
 {"email":"admin@admin.com","role":"admin","passhash":"$2a$10$H3ycTXufqoa5Yrs.qLCmBOqgq31CpD77417SH463oQXRRX8UBfnSi","_id":"u5lvkzWt9RyNEpwu"}
+{"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}

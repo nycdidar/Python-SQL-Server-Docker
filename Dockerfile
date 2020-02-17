@@ -38,7 +38,8 @@ RUN \
   #apt-get autoremove -y && apt-get autoclean -y
 
 # install pyodbc (and, optionally, sqlalchemy)
-RUN pip install --trusted-host pypi.python.org pyodbc==4.0.26 sqlalchemy==1.3.5
+RUN pip install --trusted-host pypi.python.org pyodbc==4.0.26 sqlalchemy==1.3.5 pandasql seaborn
+
 
 ENV FLASK_APP=server.py
 
