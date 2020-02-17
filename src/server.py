@@ -28,12 +28,12 @@ def index():
     print ('Using the following SQL Server version:')
     #tsql = "SELECT @@version;"
     tsql = "SELECT * FROM dbo.Customers"
-    df = pd.read_sql(tsql, cnxn)
     
-    with cursor.execute(tsql):
-        row = cursor.fetchone()
-        response = make_response(str(row), 200)
-        response.headers["Content-Type"] = "application/json"
-        # ! TODO FORMAT DATA
-        return jsonify({"Name": str(df.head) + ' ' + str(row[1])})
+    # ! TO DO. Use Dataframe
+    df = pd.read_sql(tsql, cnxn)
 
+    result = cursor.execute(tsql)
+    items = []
+    for row in result:
+        items.append({ 'ID': row[0], 'Name': row[1], 'Contact': row[2], 'Title': row[3], 'Address': row[4]})
+    return jsonify({'cols': str(df.columns), 'items': items})
