@@ -34,5 +34,6 @@ def index():
         row = cursor.fetchone()
         response = make_response(str(row), 200)
         response.headers["Content-Type"] = "application/json"
+        # ! TODO FORMAT DATA
         return jsonify({"Name": str(df.head) + ' ' + str(row[1])})
 
